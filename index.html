@@ -495,87 +495,22 @@ h1{
     </div>
 
 </div>
+<!-- Meta Pixel Code -->
 <script>
-const PIXEL_ID = "1140077885316957";
-const WORKER_URL =
-"https://little-scene-771f.amitmrkumar23.workers.dev/join";
-
-function loadPixel() {
-    if (window.fbq) return;
-
-    !function(f,b,e,v,n,t,s){
-        if(f.fbq)return;
-        n=f.fbq=function(){
-            n.callMethod ?
-            n.callMethod.apply(n,arguments) :
-            n.queue.push(arguments)
-        };
-        if(!f._fbq)f._fbq=n;
-        n.push=n;
-        n.loaded=true;
-        n.version='2.0';
-        n.queue=[];
-        t=b.createElement(e);
-        t.async=true;
-        t.src=v;
-        s=b.getElementsByTagName(e)[0];
-        s.parentNode.insertBefore(t,s)
-    }(window,document,'script',
-    'https://connect.facebook.net/en_US/fbevents.js');
-
-    fbq('init', PIXEL_ID);
-    fbq('track', 'PageView');
-}
-
-function getCookie(name) {
-    const item = document.cookie
-        .split('; ')
-        .find(row => row.startsWith(name + '='));
-    return item ? item.substring(name.length + 1) : "";
-}
-
-document.querySelectorAll("a.btn").forEach(button => {
-    button.addEventListener("click", async function(e) {
-        const consent = confirm(
-            "Allow advertising conversion tracking?"
-        );
-
-        if (!consent) return;
-
-        e.preventDefault();
-        loadPixel();
-
-        const params = new URLSearchParams(
-            window.location.search
-        );
-
-        for (let i = 0; i < 20; i++) {
-            if (getCookie("_fbp")) break;
-            await new Promise(r => setTimeout(r, 100));
-        }
-
-        const form = document.createElement("form");
-        form.method = "POST";
-        form.action = WORKER_URL;
-
-        const data = {
-            fbclid: params.get("fbclid") || "",
-            fbp: getCookie("_fbp"),
-            fbc: getCookie("_fbc")
-        };
-
-        Object.entries(data).forEach(([key, value]) => {
-            const input = document.createElement("input");
-            input.type = "hidden";
-            input.name = key;
-            input.value = value;
-            form.appendChild(input);
-        });
-
-        document.body.appendChild(form);
-        form.submit();
-    });
-});
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '2409847513094513');
+fbq('track', 'PageView');
 </script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=2409847513094513&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Meta Pixel Code -->
 </body>
 </html>
